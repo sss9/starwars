@@ -1,9 +1,6 @@
 package com.starwars.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString(exclude = {"people","planets"})
 public class Film {
     @Id
     @GeneratedValue
@@ -35,7 +33,7 @@ public class Film {
     @ManyToMany
     @JoinTable(joinColumns = {@JoinColumn(name = "film_id")},
             inverseJoinColumns = {@JoinColumn(name = "planet_id")})
-    private List<Planet> planet;
+    private List<Planet> planets;
 
 
 }
